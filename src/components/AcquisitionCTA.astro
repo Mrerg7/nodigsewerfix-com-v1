@@ -1,0 +1,38 @@
+---
+import { ACQUISITION_MAILTO, SITE } from '../config/site';
+---
+
+<section id="acquire" class="bg-white border-t border-slate-100 py-16">
+  <div class="max-w-screen-xl mx-auto px-6">
+    <div class="max-w-2xl mx-auto text-center mb-10">
+      <div class="inline-flex items-center px-4 py-1 rounded-3xl bg-emerald-100 text-emerald-700 text-xs font-bold tracking-widest mb-4">
+        AVAILABLE NOW
+      </div>
+      <h2 class="text-4xl font-semibold tracking-tighter">
+        Ready to own <span class="domain-name">nodigsewerfix.com</span>?
+      </h2>
+      <p class="mt-3 text-lg text-slate-600">
+        Secure this premium brand asset before your competitors do. Serious inquiries only.
+      </p>
+    </div>
+
+    <div class="max-w-lg mx-auto text-center">
+      <a
+        href={ACQUISITION_MAILTO}
+        class="inline-flex w-full items-center justify-center gap-x-3 h-14 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg rounded-3xl cta-button"
+      >
+        <span>Inquire About Acquisition</span>
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+
+      <p class="mt-6 text-sm text-slate-500">
+        Contact <a href={`mailto:${SITE.email}`} class="text-emerald-600 hover:underline font-medium">{SITE.email}</a> for
+        pricing, transfer logistics, and escrow options.
+      </p>
+
+      <p class="mt-4 text-xs text-slate-400">
+        Secure transfer via Escrow.com or your preferred method &bull; Domain push or auth code provided
+      </p>
+    </div>
+  </div>
+</section>

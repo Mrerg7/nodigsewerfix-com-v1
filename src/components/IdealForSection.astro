@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+
+const idealFor = (await getCollection('ideal-for')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="ideal-for" class="bg-slate-900 text-white py-16">
+  <div class="max-w-screen-xl mx-auto px-6">
+    <div class="max-w-2xl mx-auto text-center mb-10">
+      <div class="text-emerald-400 text-xs font-bold tracking-[2px]">WHO THIS DOMAIN IS BUILT FOR</div>
+      <h2 class="section-header mt-3 text-white">Perfect for companies ready to lead in trenchless sewer repair</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {
+        idealFor.map((item) => (
+          <div class="bg-white/5 backdrop-blur border border-white/10 rounded-3xl p-7">
+            <div class="text-emerald-400 mb-3">
+              <i class={`fa-solid ${item.data.icon} text-3xl`}></i>
+            </div>
+            <div class="font-semibold text-xl tracking-tight">{item.data.title}</div>
+            <p class="mt-2 text-sm text-white/70">{item.body}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-8 text-center">
+      <p class="text-white/60 text-sm max-w-md mx-auto">
+        Also ideal for digital agencies, lead-generation companies, or investors building authority sites in the home
+        services vertical.
+      </p>
+    </div>
+  </div>
+</section>

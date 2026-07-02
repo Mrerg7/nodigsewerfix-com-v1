@@ -1,0 +1,68 @@
+---
+import { cfImageUrl, CF_IMAGES } from '../config/site';
+
+const serviceImage = cfImageUrl(CF_IMAGES.serviceImageId);
+---
+
+<section class="bg-white border-y border-slate-100 py-14">
+  <div class="max-w-screen-xl mx-auto px-6">
+    <div class="grid lg:grid-cols-12 gap-x-12 gap-y-10 items-center">
+      <div class="lg:col-span-7">
+        <div class="max-w-lg">
+          <div class="text-emerald-600 text-sm font-bold tracking-[1.5px]">THE MODERN SOLUTION</div>
+          <h2 class="section-header mt-2 tracking-tighter">
+            Sewer pipe re-lining is the future.<br />Your domain should lead it.
+          </h2>
+
+          <div class="mt-6 space-y-5 text-[15px] text-slate-600 leading-relaxed">
+            <p>
+              Trenchless sewer pipe re-lining (primarily Cured-in-Place Pipe or CIPP) is a proven, modern technique that
+              rehabilitates damaged or aging sewer lines by inserting a resin-saturated liner that cures inside the
+              existing pipe — creating a new, seamless, structural pipe without excavating your yard, driveway, or
+              landscaping.
+            </p>
+            <p>
+              <span class="font-semibold text-slate-800">nodigsewerfix.com</span> perfectly encapsulates this value
+              proposition in a single, powerful, customer-facing brand.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 space-y-6">
+        <img
+          src={serviceImage}
+          alt="Trenchless sewer pipe re-lining equipment and CIPP technology"
+          class="w-full rounded-3xl modern-shadow object-cover aspect-[4/3]"
+          loading="lazy"
+          width="800"
+          height="600"
+        />
+
+        <div class="bg-slate-900 text-white rounded-3xl p-8 modern-shadow">
+          <div class="uppercase text-xs tracking-[2px] text-emerald-400 font-bold mb-4">DOMAIN + SERVICE ALIGNMENT</div>
+          <div class="space-y-4">
+            <div class="flex gap-4">
+              <div class="text-emerald-400 mt-0.5"><i class="fa-solid fa-check w-5"></i></div>
+              <div class="flex-1 text-sm">
+                <span class="font-semibold">"No Dig"</span> — Directly names the trenchless advantage customers want most.
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="text-emerald-400 mt-0.5"><i class="fa-solid fa-check w-5"></i></div>
+              <div class="flex-1 text-sm">
+                <span class="font-semibold">"Sewer Fix"</span> — Clear, benefit-oriented language that builds trust and intent.
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="text-emerald-400 mt-0.5"><i class="fa-solid fa-check w-5"></i></div>
+              <div class="flex-1 text-sm">
+                <span class="font-semibold">.com</span> — The gold standard TLD for professional service businesses.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

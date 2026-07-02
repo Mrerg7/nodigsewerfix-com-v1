@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+
+const facts = (await getCollection('facts')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="facts" class="max-w-screen-xl mx-auto px-6 py-16">
+  <div class="max-w-2xl mx-auto text-center mb-10">
+    <div class="text-emerald-600 text-sm font-bold tracking-widest">PROVEN INDUSTRY ADVANTAGES</div>
+    <h2 class="section-header mt-3">Why leading companies are shifting to trenchless pipe re-lining</h2>
+    <p class="text-slate-600 mt-3">
+      Backed by real contractor data and market research. Your domain should reflect this premium positioning.
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+    {
+      facts.map((fact) => (
+        <div class="bg-white rounded-3xl p-7 border border-slate-100 modern-shadow">
+          <div class="flex items-start gap-x-4">
+            <div class="fact-icon">
+              <i class={`fa-solid ${fact.data.icon} text-2xl`}></i>
+            </div>
+            <div>
+              <div class="font-semibold text-lg tracking-tight">{fact.data.title}</div>
+              <p class="text-sm text-slate-600 mt-1.5">{fact.body}</p>
+              <div class="text-[10px] text-emerald-600 font-medium mt-3">Source: {fact.data.source}</div>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="mt-8 text-center text-xs text-slate-500 max-w-md mx-auto">
+    These advantages are why forward-thinking plumbing, restoration, and infrastructure companies are aggressively
+    branding around trenchless / "no dig" services.
+  </div>
+</section>

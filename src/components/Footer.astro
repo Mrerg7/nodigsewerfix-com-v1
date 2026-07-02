@@ -1,0 +1,68 @@
+---
+import { ACQUISITION_MAILTO, SITE, DISCLAIMER_DATE } from '../config/site';
+---
+
+<footer class="relative z-10 bg-slate-900 text-white">
+  <div class="max-w-screen-xl mx-auto px-6 py-16">
+    <!-- Sophisticated Domain Acquisition CTA -->
+    <div class="relative overflow-hidden rounded-3xl border border-teal-500/25 bg-gradient-to-br from-slate-900 via-slate-950 to-teal-900/20 p-8 sm:p-12 mb-12">
+      <div
+        class="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-teal-500/10 blur-3xl pointer-events-none"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="absolute -bottom-24 -left-24 w-64 h-64 rounded-full bg-orange-500/10 blur-3xl pointer-events-none"
+        aria-hidden="true"
+      ></div>
+
+      <div class="relative z-10 grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
+        <div>
+          <p class="text-xs uppercase tracking-[3px] text-teal-400 font-extrabold mb-4">Domain Available for Acquisition</p>
+          <h2 class="font-display text-3xl sm:text-4xl tracking-tight mb-4 text-white">
+            nodigsewerfix.com — A Category-Defining Digital Asset
+          </h2>
+          <p class="text-slate-400 max-w-xl leading-relaxed">
+            Positioned at the intersection of trenchless sewer repair, CIPP pipe lining, and exact-match SEO, this domain
+            is a rare strategic asset for contractors, plumbers, and infrastructure firms. Serious buyers may inquire
+            for pricing, transfer logistics, and escrow options.
+          </p>
+        </div>
+
+        <div class="rounded-2xl p-6 sm:p-8 border border-white/10 bg-slate-950/80 backdrop-blur-xl">
+          <p class="text-xs uppercase tracking-[2px] text-slate-500 font-semibold mb-2">Acquisition Contact</p>
+          <a
+            href={`mailto:${SITE.email}`}
+            class="block text-2xl sm:text-3xl font-display text-white hover:text-teal-400 transition-colors break-all"
+          >
+            {SITE.email}
+          </a>
+          <a
+            href={ACQUISITION_MAILTO}
+            class="mt-6 inline-flex w-full items-center justify-center gap-x-3 px-6 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-extrabold rounded-2xl hover:brightness-110 transition-all cta-button"
+          >
+            <span>Inquire About Acquisition</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <p class="mt-4 text-[11px] text-slate-500 text-center tracking-wide">
+            Confidential inquiries &bull; Response within 24 hours
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <p class="text-xs text-slate-500 leading-relaxed max-w-4xl mb-10">
+      This website is for demonstration and informational purposes only. It does not constitute an offer of services, a
+      commitment to deploy, or a guarantee of outcomes. All statistics, projections, and references to specific
+      technologies are based on publicly available information as of {DISCLAIMER_DATE} and are subject to change.
+    </p>
+
+    <!-- Bottom bar -->
+    <div class="pt-8 border-t border-white/10 text-xs text-slate-500 flex flex-col md:flex-row gap-y-4 items-center justify-between">
+      <div>&copy; 2026 nodigsewerfix.com. All rights reserved.</div>
+      <div class="flex items-center gap-x-5">
+        <span>Exact-match domain in the trenchless sewer repair niche</span>
+      </div>
+    </div>
+  </div>
+</footer>

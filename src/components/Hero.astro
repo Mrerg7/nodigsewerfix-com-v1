@@ -1,0 +1,86 @@
+---
+import { ACQUISITION_MAILTO, cfImageUrl, CF_IMAGES } from '../config/site';
+
+const heroImage = cfImageUrl(CF_IMAGES.heroImageId);
+---
+
+<header class="relative bg-white overflow-hidden">
+  <div
+    class="absolute inset-0 z-0 opacity-20"
+    style={`background-image: url('${heroImage}'); background-size: cover; background-position: center;`}
+    aria-hidden="true"
+  ></div>
+  <div class="absolute inset-0 z-[1] bg-gradient-to-b from-white/80 via-white/90 to-slate-50" aria-hidden="true"></div>
+
+  <div class="relative z-[2] max-w-screen-xl mx-auto px-6 pt-16 pb-12">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center gap-x-2 bg-slate-100 text-slate-600 text-xs font-semibold tracking-[1.5px] px-4 h-8 rounded-3xl mb-6">
+        <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+        <span>PREMIUM EXACT-MATCH .COM DOMAIN</span>
+      </div>
+
+      <h1 class="text-5xl md:text-7xl leading-none tracking-tighter font-bold mb-4">
+        <span class="domain-name text-slate-900">nodigsewerfix.com</span>
+      </h1>
+
+      <p class="text-2xl md:text-3xl text-slate-600 font-medium tracking-tight mb-3">
+        The perfect brand for modern<br class="hidden md:block" /> trenchless sewer repair companies.
+      </p>
+
+      <p class="max-w-lg mx-auto text-lg text-slate-500 mb-10">
+        Own the exact-match domain that instantly tells homeowners and businesses:
+        <span class="font-semibold text-slate-700">"No digging. Professional fix. Fast results."</span>
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href={ACQUISITION_MAILTO}
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-x-3 px-9 h-14 text-lg font-semibold bg-orange-500 hover:bg-orange-600 text-white rounded-3xl cta-button"
+        >
+          <span>Secure This Domain</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <a
+          href="#why-perfect"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-x-2 px-8 h-14 text-lg font-semibold border border-slate-300 hover:bg-white transition-colors rounded-3xl text-slate-700"
+        >
+          Why It's Perfect
+        </a>
+      </div>
+
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm">
+        <div class="flex items-center gap-x-2 text-slate-500">
+          <i class="fa-solid fa-check text-emerald-500"></i>
+          <span class="font-medium">Instant brand recognition</span>
+        </div>
+        <div class="flex items-center gap-x-2 text-slate-500">
+          <i class="fa-solid fa-check text-emerald-500"></i>
+          <span class="font-medium">High commercial intent</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="relative z-[2] border-t border-b border-slate-100 bg-slate-50/80 py-4">
+    <div class="max-w-screen-xl mx-auto px-6">
+      <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-xs uppercase tracking-[1.5px] font-semibold text-slate-500">
+        <div class="flex items-center gap-x-2">
+          <i class="fa-solid fa-globe text-base text-slate-400"></i>
+          <span>Exact Match Keywords</span>
+        </div>
+        <div class="flex items-center gap-x-2">
+          <i class="fa-solid fa-shield-halved text-base text-slate-400"></i>
+          <span>Premium .COM TLD</span>
+        </div>
+        <div class="flex items-center gap-x-2">
+          <i class="fa-solid fa-bolt text-base text-slate-400"></i>
+          <span>Memorable &amp; Brandable</span>
+        </div>
+        <div class="flex items-center gap-x-2">
+          <i class="fa-solid fa-chart-line text-base text-slate-400"></i>
+          <span>SEO &amp; Marketing Ready</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
