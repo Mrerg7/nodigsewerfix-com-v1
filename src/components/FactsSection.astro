@@ -24,7 +24,7 @@ const facts = (await getCollection('facts')).sort((a, b) => a.data.order - b.dat
             <div>
               <div class="font-semibold text-lg tracking-tight">{fact.data.title}</div>
               <p class="text-sm text-slate-600 mt-1.5">{fact.body}</p>
-              <div class="text-[10px] text-emerald-600 font-medium mt-3">Source: {fact.data.source}</div>
+              <div class="text-xs text-emerald-600 font-medium mt-3">Source: {fact.data.source}</div>
             </div>
           </div>
         </div>

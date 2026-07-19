@@ -32,7 +32,7 @@ import { ACQUISITION_MAILTO, SITE, DISCLAIMER_DATE } from '../config/site';
           <p class="text-xs uppercase tracking-[2px] text-slate-500 font-semibold mb-2">Acquisition Contact</p>
           <a
             href={`mailto:${SITE.email}`}
-            class="block text-2xl sm:text-3xl font-display text-white hover:text-teal-400 transition-colors break-all"
+            class="block text-2xl sm:text-3xl font-display text-white hover:text-teal-400 transition-colors break-words"
           >
             {SITE.email}
           </a>
@@ -43,7 +43,7 @@ import { ACQUISITION_MAILTO, SITE, DISCLAIMER_DATE } from '../config/site';
             <span>Inquire About Acquisition</span>
             <i class="fa-solid fa-arrow-right"></i>
           </a>
-          <p class="mt-4 text-[11px] text-slate-500 text-center tracking-wide">
+          <p class="mt-4 text-xs text-slate-500 text-center tracking-wide">
             Confidential inquiries &bull; Response within 24 hours
           </p>
         </div>

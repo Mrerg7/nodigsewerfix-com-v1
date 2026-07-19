@@ -16,7 +16,7 @@ const faqs = (await getCollection('faq')).sort((a, b) => a.data.order - b.data.o
               {faq.data.question}
               <i class="fa-solid fa-chevron-down text-slate-400 transition-transform group-open:rotate-180"></i>
             </summary>
-            <div class="pb-5 text-slate-600 text-[15px] leading-relaxed">{faq.body}</div>
+            <div class="pb-5 text-slate-600 text-base leading-relaxed">{faq.body}</div>
           </details>
         ))
       }

@@ -19,18 +19,20 @@ import { ACQUISITION_MAILTO } from '../config/site';
         <a href="#faq" class="text-slate-600 hover:text-slate-900 transition-colors">FAQ</a>
       </div>
 
-      <div class="flex items-center gap-x-3">
+      <div class="flex items-center gap-x-4">
         <a
           href={ACQUISITION_MAILTO}
-          class="inline-flex items-center px-5 py-2.5 text-sm font-semibold bg-orange-500 hover:bg-orange-600 text-white rounded-2xl transition-all cta-button"
+          class="inline-flex items-center px-5 py-3 text-sm font-semibold bg-orange-500 hover:bg-orange-600 text-white rounded-2xl transition-all cta-button"
         >
           Inquire Now
         </a>
 
         <button
           id="mobile-menu-btn"
-          class="md:hidden w-10 h-10 flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-2xl transition-colors"
+          class="md:hidden w-11 h-11 flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-2xl transition-colors"
           aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
         >
           <i class="fa-solid fa-bars text-xl"></i>
         </button>
@@ -38,15 +40,15 @@ import { ACQUISITION_MAILTO } from '../config/site';
     </div>
   </div>
 
-  <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white px-6 py-4">
-    <div class="flex flex-col gap-y-1 text-sm font-medium">
-      <a href="#why-perfect" class="py-2.5 px-3 hover:bg-slate-50 rounded-xl text-slate-600">Why This Domain</a>
-      <a href="#facts" class="py-2.5 px-3 hover:bg-slate-50 rounded-xl text-slate-600">The Facts</a>
-      <a href="#ideal-for" class="py-2.5 px-3 hover:bg-slate-50 rounded-xl text-slate-600">Ideal For</a>
-      <a href="#faq" class="py-2.5 px-3 hover:bg-slate-50 rounded-xl text-slate-600">FAQ</a>
+  <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white px-6 py-4" role="navigation" aria-label="Mobile navigation">
+    <div class="flex flex-col gap-y-2 text-sm font-medium">
+      <a href="#why-perfect" class="py-3 px-3 hover:bg-slate-50 rounded-xl text-slate-600">Why This Domain</a>
+      <a href="#facts" class="py-3 px-3 hover:bg-slate-50 rounded-xl text-slate-600">The Facts</a>
+      <a href="#ideal-for" class="py-3 px-3 hover:bg-slate-50 rounded-xl text-slate-600">Ideal For</a>
+      <a href="#faq" class="py-3 px-3 hover:bg-slate-50 rounded-xl text-slate-600">FAQ</a>
       <a
         href={ACQUISITION_MAILTO}
-        class="mt-2 py-2.5 px-3 text-center bg-orange-500 text-white rounded-2xl font-semibold"
+        class="mt-2 py-3 px-3 text-center bg-orange-500 text-white rounded-2xl font-semibold"
       >
         Inquire Now
       </a>
@@ -58,20 +60,41 @@ import { ACQUISITION_MAILTO } from '../config/site';
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
 
+  function closeMenu() {
+    menu?.classList.add('hidden');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+    const icon = btn?.querySelector('i');
+    icon?.classList.add('fa-bars');
+    icon?.classList.remove('fa-times');
+  }
+
+  function openMenu() {
+    menu?.classList.remove('hidden');
+    if (btn) btn.setAttribute('aria-expanded', 'true');
+    const icon = btn?.querySelector('i');
+    icon?.classList.remove('fa-bars');
+    icon?.classList.add('fa-times');
+  }
+
   btn?.addEventListener('click', () => {
-    menu?.classList.toggle('hidden');
-    const icon = btn.querySelector('i');
-    icon?.classList.toggle('fa-bars');
-    icon?.classList.toggle('fa-times');
+    if (menu?.classList.contains('hidden')) {
+      openMenu();
+    } else {
+      closeMenu();
+    }
   });
 
   menu?.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
-      menu.classList.add('hidden');
-      const icon = btn?.querySelector('i');
-      icon?.classList.add('fa-bars');
-      icon?.classList.remove('fa-times');
+      closeMenu();
     });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu && !menu.classList.contains('hidden')) {
+      closeMenu();
+      btn?.focus();
+    }
   });
 
   window.addEventListener('scroll', () => {
