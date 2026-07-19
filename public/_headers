@@ -3,26 +3,26 @@
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
 
-/index.html
-  X-Robots-Tag: noindex
-
-/404.html
-  X-Robots-Tag: noindex
-
 /
   Link: <https://nodigsewerfix.com/>; rel="canonical"
 
 /sitemap-index.xml
   Content-Type: application/xml; charset=utf-8
 
-/favicon.svg
-  Cache-Control: public, max-age=604800, immutable
-
-/*.html
-  X-Robots-Tag: index, follow
+/images/hero-sewer.jpg
+  Cache-Control: public, max-age=31536000, immutable
 
 /*.css
   Cache-Control: public, max-age=31536000, immutable
 
 /*.js
   Cache-Control: public, max-age=31536000, immutable
+
+/*.html
+  X-Robots-Tag: index, follow
+
+/index.html
+  X-Robots-Tag: noindex
+
+/404.html
+  X-Robots-Tag: noindex

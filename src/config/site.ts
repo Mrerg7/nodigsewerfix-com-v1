@@ -8,6 +8,7 @@ export const SITE = {
   email: 'sales@desertrich.com',
   locale: 'en_US',
   location: 'United States',
+  googleSiteVerification: 'A65OFDJ2xioGF26ot36PJQB8ToGEc7fj1FJ8XRuKoUI',
 } as const;
 
 export const CF_IMAGES = {
@@ -20,7 +21,10 @@ export function cfImageUrl(imageId: string, variant = 'public'): string {
   return `https://imagedelivery.net/${CF_IMAGES.accountHash}/${imageId}/${variant}`;
 }
 
-export const OG_IMAGE = cfImageUrl(CF_IMAGES.heroImageId);
+/** London super-sewer tunnel construction — sewer infrastructure hero */
+export const HERO_IMAGE = `${SITE.url}/images/hero-sewer.jpg`;
+
+export const OG_IMAGE = HERO_IMAGE;
 
 export const ACQUISITION_MAILTO = `mailto:${SITE.email}?subject=${encodeURIComponent('nodigsewerfix.com Domain Acquisition Inquiry')}&body=${encodeURIComponent('Hello,\n\nI am interested in acquiring nodigsewerfix.com.\n\nIntended use:\nBudget range:\n\nThank you.')}`;
 
