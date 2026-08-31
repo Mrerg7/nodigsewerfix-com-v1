@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { SITE, OG_IMAGE, ACQUISITION_MAILTO } from '../config/site';
+import { SITE, OG_IMAGE, ACQUISITION_MAILTO, DOMAIN_OFFER } from '../config/site';
 
 interface Props {
   title?: string;
@@ -18,6 +18,9 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, SITE.url);
 const publishedDate = '2026-07-02';
+const priceValidUntil = new Date();
+priceValidUntil.setFullYear(priceValidUntil.getFullYear() + 1);
+const priceValidUntilISO = priceValidUntil.toISOString().split('T')[0];
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -57,12 +60,47 @@ const structuredData = {
       offers: {
         '@type': 'Offer',
         url: ACQUISITION_MAILTO,
-        priceCurrency: 'USD',
-        availability: 'https://schema.org/InStock',
+        price: DOMAIN_OFFER.price,
+        priceCurrency: DOMAIN_OFFER.priceCurrency,
+        priceValidUntil: priceValidUntilISO,
+        availability: DOMAIN_OFFER.availability,
+        itemCondition: DOMAIN_OFFER.itemCondition,
         seller: {
           '@type': 'Organization',
           name: SITE.name,
           email: SITE.email,
+        },
+        shippingDetails: {
+          '@type': 'OfferShippingDetails',
+          shippingDestination: {
+            '@type': 'DefinedRegion',
+            addressCountry: 'US',
+          },
+          deliveryTime: {
+            '@type': 'ShippingDeliveryTime',
+            handlingTime: {
+              '@type': 'QuantitativeValue',
+              minValue: 0,
+              maxValue: 2,
+              unitCode: 'DAY',
+            },
+            transitTime: {
+              '@type': 'QuantitativeValue',
+              minValue: 0,
+              maxValue: 0,
+              unitCode: 'DAY',
+            },
+          },
+          shippingRate: {
+            '@type': 'MonetaryAmount',
+            value: '0',
+            currency: 'USD',
+          },
+        },
+        hasMerchantReturnPolicy: {
+          '@type': 'MerchantReturnPolicy',
+          applicableCountry: 'US',
+          returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
         },
       },
     },

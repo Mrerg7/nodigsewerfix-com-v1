@@ -28,4 +28,14 @@ export const OG_IMAGE = HERO_IMAGE;
 
 export const ACQUISITION_MAILTO = `mailto:${SITE.email}?subject=${encodeURIComponent('nodigsewerfix.com Domain Acquisition Inquiry')}&body=${encodeURIComponent('Hello,\n\nI am interested in acquiring nodigsewerfix.com.\n\nIntended use:\nBudget range:\n\nThank you.')}`;
 
+/** Listed asking price (USD) — shown on-page and in Product/Offer structured data */
+export const DOMAIN_ASKING_PRICE = 9995;
+
+export const DOMAIN_OFFER = {
+  price: DOMAIN_ASKING_PRICE.toFixed(2),
+  priceCurrency: 'USD',
+  availability: 'https://schema.org/InStock',
+  itemCondition: 'https://schema.org/NewCondition',
+} as const;
+
 export const DISCLAIMER_DATE = 'July 2, 2026';

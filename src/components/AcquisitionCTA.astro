@@ -1,5 +1,11 @@
 ---
-import { ACQUISITION_MAILTO, SITE } from '../config/site';
+import { ACQUISITION_MAILTO, DOMAIN_ASKING_PRICE, SITE } from '../config/site';
+
+const formattedAskingPrice = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  maximumFractionDigits: 0,
+}).format(DOMAIN_ASKING_PRICE);
 ---
 
 <section id="acquire" class="bg-white border-t border-slate-100 py-16">
@@ -14,6 +20,10 @@ import { ACQUISITION_MAILTO, SITE } from '../config/site';
       <p class="mt-3 text-lg text-slate-600">
         Secure this premium brand asset before your competitors do. Serious inquiries only.
       </p>
+      <p class="mt-4 text-2xl font-semibold tracking-tight text-slate-900">
+        Asking price: <span class="text-emerald-600">{formattedAskingPrice} USD</span>
+      </p>
+      <p class="mt-1 text-sm text-slate-500">All serious offers below asking price will be considered.</p>
     </div>
 
     <div class="max-w-lg mx-auto text-center">
