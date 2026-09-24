@@ -1,27 +1,36 @@
 ---
-import { ACQUISITION_MAILTO, HERO_IMAGE } from '../config/site';
+import { ACQUISITION_MAILTO, HERO_SRCSET, DOMAIN_ASKING_PRICE } from '../config/site';
+
+const formattedPrice = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  maximumFractionDigits: 0,
+}).format(DOMAIN_ASKING_PRICE);
 ---
 
 <header class="relative overflow-hidden bg-slate-900">
   <!-- Hero background image -->
   <img
-    src={HERO_IMAGE}
+    src="/images/hero-sewer.jpg"
+    srcset={HERO_SRCSET}
+    sizes="100vw"
     alt="Underground super-sewer tunnel construction and sewer line infrastructure"
     class="absolute inset-0 w-full h-full object-cover"
     fetchpriority="high"
-    width="1920"
-    height="1080"
+    decoding="async"
+    width="1600"
+    height="1300"
   />
   <div class="absolute inset-0 bg-gradient-to-b from-slate-900/75 via-slate-900/60 to-slate-900/85" aria-hidden="true"></div>
 
   <div class="relative z-10 max-w-screen-xl mx-auto px-6 pt-16 pb-12">
     <div class="max-w-4xl mx-auto text-center">
-      <div class="inline-flex flex-wrap items-center justify-center gap-x-2 bg-white/10 text-white/90 text-[11px] sm:text-xs font-semibold tracking-[1.5px] px-4 h-8 rounded-3xl mb-6 backdrop-blur-sm border border-white/10">
+      <div class="inline-flex flex-wrap items-center justify-center gap-x-2 bg-white/10 text-white/90 text-[11px] sm:text-xs font-semibold tracking-[1.5px] px-4 py-2 rounded-3xl mb-6 backdrop-blur-sm border border-white/10">
         <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
         <span>PREMIUM EXACT-MATCH .COM DOMAIN</span>
       </div>
 
-      <h1 class="text-3xl sm:text-5xl md:text-7xl leading-none tracking-tighter font-bold mb-4">
+      <h1 class="text-[28px] sm:text-5xl md:text-7xl leading-none tracking-tighter font-bold mb-4">
         <span class="domain-name text-white">nodigsewerfix.com</span>
       </h1>
 
@@ -29,7 +38,7 @@ import { ACQUISITION_MAILTO, HERO_IMAGE } from '../config/site';
         The perfect brand for modern<br class="hidden md:block" /> trenchless sewer repair companies.
       </p>
 
-      <p class="max-w-lg mx-auto text-lg text-white/70 mb-10">
+      <p class="max-w-lg mx-auto text-lg text-white/70 mb-8">
         Own the exact-match domain that instantly tells homeowners and businesses:
         <span class="font-semibold text-white">"No digging. Professional fix. Fast results."</span>
       </p>
@@ -37,7 +46,7 @@ import { ACQUISITION_MAILTO, HERO_IMAGE } from '../config/site';
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
         <a
           href={ACQUISITION_MAILTO}
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-x-3 px-9 h-14 text-lg font-semibold bg-orange-500 hover:bg-orange-600 text-white rounded-3xl cta-button"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-x-3 px-9 h-14 text-lg font-semibold bg-orange-700 hover:bg-orange-800 text-white rounded-3xl cta-button"
         >
           <span>Secure This Domain</span>
           <i class="fa-solid fa-arrow-right"></i>
@@ -50,7 +59,13 @@ import { ACQUISITION_MAILTO, HERO_IMAGE } from '../config/site';
         </a>
       </div>
 
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm">
+      <p class="mt-5 text-sm text-white/70">
+        Asking <span class="text-white font-semibold">{formattedPrice} USD</span> &bull;
+        <span class="whitespace-nowrap">Escrow-protected transfer</span> &bull;
+        <span class="whitespace-nowrap">24–48h delivery</span>
+      </p>
+
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm">
         <div class="flex items-center gap-x-2 text-white/70">
           <i class="fa-solid fa-check text-emerald-400"></i>
           <span class="font-medium">Instant brand recognition</span>

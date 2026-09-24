@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import { ACQUISITION_MAILTO, DOMAIN_ASKING_PRICE, SITE } from '../config/site';
+
+const formattedPrice = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  maximumFractionDigits: 0,
+}).format(DOMAIN_ASKING_PRICE);
+---
+
+<BaseLayout
+  noindex
+  title="Page Not Found | nodigsewerfix.com"
+  description="This page does not exist. nodigsewerfix.com is a premium domain for sale — trenchless sewer repair & CIPP pipe lining."
+>
+  <Nav />
+  <main class="min-h-[70vh] flex items-center justify-center px-6 py-20">
+    <div class="max-w-lg text-center">
+      <p class="text-sm font-bold tracking-widest text-emerald-700 mb-4">404 — PAGE NOT FOUND</p>
+      <h1 class="text-3xl sm:text-4xl font-semibold tracking-tighter mb-4">
+        This URL doesn't exist.
+      </h1>
+      <p class="text-slate-600 mb-8">
+        The page you're looking for may have moved. The domain <span class="domain-name">nodigsewerfix.com</span>
+        is still available — asking {formattedPrice} USD.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/"
+          class="inline-flex items-center justify-center px-7 h-12 font-semibold bg-slate-900 hover:bg-slate-800 text-white rounded-2xl transition-colors"
+        >
+          Back to Homepage
+        </a>
+        <a
+          href={ACQUISITION_MAILTO}
+          class="inline-flex items-center justify-center px-7 h-12 font-semibold bg-orange-700 hover:bg-orange-800 text-white rounded-2xl transition-colors cta-button"
+        >
+          Inquire About the Domain
+        </a>
+      </div>
+      <p class="mt-8 text-sm text-slate-500">
+        Or email <a href={`mailto:${SITE.email}`} class="text-emerald-700 hover:underline font-medium">{SITE.email}</a>
+      </p>
+    </div>
+  </main>
+</BaseLayout>

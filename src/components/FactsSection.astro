@@ -6,7 +6,7 @@ const facts = (await getCollection('facts')).sort((a, b) => a.data.order - b.dat
 
 <section id="facts" class="max-w-screen-xl mx-auto px-6 py-16">
   <div class="max-w-2xl mx-auto text-center mb-10">
-    <div class="text-emerald-600 text-sm font-bold tracking-widest">PROVEN INDUSTRY ADVANTAGES</div>
+    <div class="text-emerald-700 text-sm font-bold tracking-widest">PROVEN INDUSTRY ADVANTAGES</div>
     <h2 class="section-header mt-3">Why leading companies are shifting to trenchless pipe re-lining</h2>
     <p class="text-slate-600 mt-3">
       Backed by real contractor data and market research. Your domain should reflect this premium positioning.
@@ -24,7 +24,7 @@ const facts = (await getCollection('facts')).sort((a, b) => a.data.order - b.dat
             <div>
               <div class="font-semibold text-lg tracking-tight">{fact.data.title}</div>
               <p class="text-sm text-slate-600 mt-1.5">{fact.body}</p>
-              <div class="text-xs text-emerald-600 font-medium mt-3">Source: {fact.data.source}</div>
+              <div class="text-xs text-emerald-700 font-medium mt-3">Source: {fact.data.source}</div>
             </div>
           </div>
         </div>

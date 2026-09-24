@@ -1,5 +1,14 @@
 ---
 import '../styles/global.css';
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-500.css';
+import '@fontsource/inter/latin-600.css';
+import '@fontsource/inter/latin-700.css';
+import '@fontsource/inter/latin-800.css';
+import '@fontsource/space-grotesk/latin-500.css';
+import '@fontsource/space-grotesk/latin-600.css';
+import '@fontsource/space-grotesk/latin-700.css';
+import { getCollection } from 'astro:content';
 import { SITE, OG_IMAGE, ACQUISITION_MAILTO, DOMAIN_OFFER } from '../config/site';
 
 interface Props {
@@ -18,40 +27,45 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, SITE.url);
 const publishedDate = '2026-07-02';
+const modifiedDate = '2026-09-24';
 const priceValidUntil = new Date();
 priceValidUntil.setFullYear(priceValidUntil.getFullYear() + 1);
 const priceValidUntilISO = priceValidUntil.toISOString().split('T')[0];
+
+const faqs = (await getCollection('faq')).sort((a, b) => a.data.order - b.data.order);
 
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
     {
       '@type': 'WebSite',
-      '@id': `${SITE.url}/#website`,
-      url: SITE.url,
+      '@id': `${SITE.rootUrl}#website`,
+      url: SITE.rootUrl,
       name: SITE.name,
       description,
       inLanguage: 'en-US',
+      publisher: { '@id': `${SITE.rootUrl}#organization` },
     },
     {
       '@type': 'WebPage',
-      '@id': `${SITE.url}/#webpage`,
-      url: SITE.url,
+      '@id': `${SITE.rootUrl}#webpage`,
+      url: SITE.rootUrl,
       name: title,
       description,
-      isPartOf: { '@id': `${SITE.url}/#website` },
+      isPartOf: { '@id': `${SITE.rootUrl}#website` },
+      primaryImageOfPage: { '@type': 'ImageObject', url: ogImage, width: 1200, height: 630 },
       datePublished: publishedDate,
-      dateModified: publishedDate,
+      dateModified: modifiedDate,
       inLanguage: 'en-US',
     },
     {
       '@type': 'Product',
-      '@id': `${SITE.url}/#product`,
+      '@id': `${SITE.rootUrl}#product`,
       name: 'nodigsewerfix.com Premium Domain Name',
       description:
         'Exact-match .com domain for trenchless sewer repair, CIPP pipe lining, and no-dig sewer fix companies. Available for acquisition.',
-      url: SITE.url,
-      image: OG_IMAGE,
+      url: SITE.rootUrl,
+      image: [ogImage],
       category: 'Premium Domain Name',
       brand: {
         '@type': 'Brand',
@@ -106,10 +120,11 @@ const structuredData = {
     },
     {
       '@type': 'Organization',
-      '@id': `${SITE.url}/#organization`,
+      '@id': `${SITE.rootUrl}#organization`,
       name: SITE.name,
-      url: SITE.url,
+      url: SITE.rootUrl,
       email: SITE.email,
+      logo: `${SITE.rootUrl}apple-touch-icon.png`,
       address: {
         '@type': 'PostalAddress',
         addressCountry: 'US',
@@ -117,25 +132,15 @@ const structuredData = {
     },
     {
       '@type': 'FAQPage',
-      '@id': `${SITE.url}/#faq`,
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'How does the domain transfer work?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Upon agreement and payment, the domain will be pushed or transferred to your registrar. Transfers typically complete within 24–48 hours of cleared funds.',
-          },
+      '@id': `${SITE.rootUrl}#faq`,
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.data.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.body.trim(),
         },
-        {
-          '@type': 'Question',
-          name: 'What makes nodigsewerfix.com valuable?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'It is an exact-match descriptive domain for high-intent "no dig sewer fix" searches in a high-growth trenchless repair niche.',
-          },
-        },
-      ],
+      })),
     },
   ],
 };
@@ -150,7 +155,7 @@ const structuredData = {
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content={noindex ? 'noindex' : 'index, follow, max-image-preview:large'} />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1'} />
     <link rel="canonical" href={canonicalURL} />
 
     <meta property="og:type" content="website" />
@@ -171,11 +176,36 @@ const structuredData = {
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content="nodigsewerfix.com — Premium Domain for Trenchless Sewer Repair" />
 
+    <meta name="theme-color" content="#0F172A" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      />
+    </noscript>
+
+    <link
+      rel="preload"
+      as="image"
+      href="/images/hero-sewer.jpg"
+      imagesrcset="/images/hero-sewer-800.jpg 800w, /images/hero-sewer.jpg 1600w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
+
     {SITE.googleSiteVerification && (
       <meta name="google-site-verification" content={SITE.googleSiteVerification} />
     )}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body>

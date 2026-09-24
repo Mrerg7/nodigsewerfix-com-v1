@@ -1,10 +1,11 @@
 export const SITE = {
   name: 'nodigsewerfix.com',
-  title:
-    'nodigsewerfix.com • Premium Domain for Sale | Trenchless Sewer Repair & CIPP Pipe Lining',
+  title: 'nodigsewerfix.com — Premium Domain for Sale | Trenchless Sewer',
   description:
-    'Own nodigsewerfix.com — the exact-match .com domain for trenchless sewer repair, CIPP pipe lining, and no-dig sewer fix companies. Instant brand recognition in a high-growth home services niche.',
+    'nodigsewerfix.com is for sale — the exact-match .com domain for trenchless sewer repair, CIPP pipe lining, and no-dig sewer fix. Asking $9,995.',
   url: 'https://nodigsewerfix.com',
+  /** Canonical root URL with trailing slash (matches trailingSlash: "always") */
+  rootUrl: 'https://nodigsewerfix.com/',
   email: 'sales@desertrich.com',
   locale: 'en_US',
   location: 'United States',
@@ -24,7 +25,11 @@ export function cfImageUrl(imageId: string, variant = 'public'): string {
 /** London super-sewer tunnel construction — sewer infrastructure hero */
 export const HERO_IMAGE = `${SITE.url}/images/hero-sewer.jpg`;
 
-export const OG_IMAGE = HERO_IMAGE;
+/** Responsive hero sources (1600w desktop / 800w mobile) */
+export const HERO_SRCSET = '/images/hero-sewer-800.jpg 800w, /images/hero-sewer.jpg 1600w';
+
+/** Dedicated 1200×630 Open Graph / Twitter card image */
+export const OG_IMAGE = `${SITE.url}/images/og-image.jpg`;
 
 export const ACQUISITION_MAILTO = `mailto:${SITE.email}?subject=${encodeURIComponent('nodigsewerfix.com Domain Acquisition Inquiry')}&body=${encodeURIComponent('Hello,\n\nI am interested in acquiring nodigsewerfix.com.\n\nIntended use:\nBudget range:\n\nThank you.')}`;
 

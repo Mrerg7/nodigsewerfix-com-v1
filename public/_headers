@@ -2,6 +2,8 @@
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
 
 /
   Link: <https://nodigsewerfix.com/>; rel="canonical"
@@ -9,7 +11,13 @@
 /sitemap-index.xml
   Content-Type: application/xml; charset=utf-8
 
-/images/hero-sewer.jpg
+/sitemap-0.xml
+  Content-Type: application/xml; charset=utf-8
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/_astro/*
   Cache-Control: public, max-age=31536000, immutable
 
 /*.css
@@ -17,12 +25,3 @@
 
 /*.js
   Cache-Control: public, max-age=31536000, immutable
-
-/*.html
-  X-Robots-Tag: index, follow
-
-/index.html
-  X-Robots-Tag: noindex
-
-/404.html
-  X-Robots-Tag: noindex
